@@ -1,0 +1,24 @@
+{
+  "name": "@workspace/database",
+  "exports": {
+    "./client": "./src/index.ts"
+  },
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@workspace/typescript-config": "workspace:*",
+    "@prisma/client": "^6.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "prisma": "^6.12.0"
+  }
+}
