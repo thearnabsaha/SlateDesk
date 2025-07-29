@@ -13,7 +13,7 @@ const page = () => {
   const scrolled= useScrollTop()
   return (
     <div>
-      <div className={cn("flex justify-between items-center px-10 py-2 z-50 fixed w-full top-0 bg-background",scrolled&&" border-b shadow-sm")}>
+      <div className={cn("flex justify-between items-center px-10 py-2 z-50 fixed w-full top-0 bg-background",scrolled&&" border-b shadow-sm shadow-ring")}>
         <h1>SlateDesk</h1>
         <div className="flex space-x-2">
           <Button>Login</Button>
@@ -28,6 +28,13 @@ const page = () => {
           <Image src={b} alt="book" className="w-[300px] m-30 lg:block hidden"/>
         </div>
       </div>
+      <footer className="flex justify-between px-5 relative bottom-0 ">
+        <p className="text-lg font-black">SlateDesk</p>
+        <div className="text-muted-foreground flex space-x-5 flex-col sm:flex-row">
+          <p>Privacy Policy</p>
+          <p>Terms & Conditions</p>
+        </div>
+      </footer>
     </div>
   )
 }
