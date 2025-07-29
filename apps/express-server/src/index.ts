@@ -27,15 +27,15 @@ app.get('/', (req, res) => {
     res.send('hello from simple server :)');
 });
 
-app.post('/signup', async (req, res) => {
-    const result = SignUpSchema.safeParse(req.body);
-    if (!result.success) {
-        res.send(result.error.format());
-    } else {
-        const user = await prisma.user.createMany({
-            data: req.body
-        });
-        res.send(user);
-    }
-});
+// app.post('/signup', async (req, res) => {
+//     const result = SignUpSchema.safeParse(req.body);
+//     if (!result.success) {
+//         res.send(result.error.format());
+//     } else {
+//         const user = await prisma.user.createMany({
+//             data: req.body
+//         });
+//         res.send(user);
+//     }
+// });
 app.listen(port, () => console.log('> Server is up and running on port: ' + port));
