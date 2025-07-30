@@ -45,7 +45,7 @@ import {
 
 
 
-export function AppSidebar({ children }: { children: React.ReactNode }) {
+export function AppSidebar() {
 
     return (
         <>
@@ -61,7 +61,7 @@ export function AppSidebar({ children }: { children: React.ReactNode }) {
                 </SidebarFooter>
                 <SidebarRail />
             </Sidebar>
-            {children}
+            {/* {children} */}
         </>
     );
 }
