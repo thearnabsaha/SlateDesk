@@ -5,7 +5,11 @@ import {
     SidebarGroup,
     SidebarHeader,
 } from "@workspace/ui/components/sidebar"
-
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@workspace/ui/components/resizable"
 export function AppSidebar() {
     return (
         <Sidebar>
