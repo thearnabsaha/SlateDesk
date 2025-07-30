@@ -20,7 +20,6 @@ const Dashboard = () => {
 
   return (
     <div className="flex flex-col justify-center w-full h-full">
-      {/* <h1>Dashboard</h1> */}
       <button
         className="btn btn-secondary"
         onClick={() => signOut({ callbackUrl: "/" })}
@@ -29,7 +28,6 @@ const Dashboard = () => {
       </button>
       {
         session && <div className="flex flex-col justify-center items-center w-full">
-          {/* <Image src={c} alt="book" className="w-[300px] m-10" /> */}
           <Image src={c} alt="book" className="sm:w-[300px] w-[200px] m-10" />
           <h1>Welcome to {session.user?.name?.split(" ")[0]}'s Desk</h1>
           <Button className="mt-2"><CirclePlus /> Create Slate</Button>
