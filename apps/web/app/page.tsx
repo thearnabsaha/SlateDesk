@@ -8,6 +8,7 @@ import React from 'react'
 import { ModeToggle } from "@/components/ModeToggle"
 import { useScrollTop } from "@/components/use-scroll-top"
 import { cn } from "@workspace/ui/lib/utils"
+import { signIn } from "next-auth/react"
 
 const page = () => {
   const scrolled = useScrollTop()
@@ -16,7 +17,7 @@ const page = () => {
       <div className={cn("flex justify-between items-center px-6 py-4 z-50 fixed w-full top-0 bg-background flex-1", scrolled && " border-b shadow-sm shadow-ring")}>
         <h1 className="text-3xl">SlateDesk</h1>
         <div className="flex space-x-2">
-          <Button className="cursor-pointer">Login</Button>
+          <Button className="cursor-pointer" onClick={() => signIn("google", { callbackUrl: "/dashboard" })}>Login</Button>
           <ModeToggle />
         </div>
       </div>
