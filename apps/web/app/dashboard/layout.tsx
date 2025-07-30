@@ -10,11 +10,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <main className="flex flex-col w-full">
                 <div className="flex justify-between py-4">
                     <SidebarTrigger />
-                    <Button
+                    {/* <Button
                         className="btn btn-secondary mx-2 cursor-pointer"
                         onClick={() => signOut({ callbackUrl: "/" })}>
                         Logout
-                    </Button>
+                    </Button> */}
                 </div>
                 {children}
             </main>

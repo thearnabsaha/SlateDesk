@@ -20,7 +20,6 @@ const Dashboard = () => {
 
   return (
     <div className="flex flex-col justify-center w-full h-full">
-
       {
         session && <div className="flex flex-col justify-center items-center w-full">
           <Image src={c} alt="book" className="sm:w-[300px] w-[200px] m-10" />
