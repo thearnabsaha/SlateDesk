@@ -6,11 +6,7 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupLabel
 import Image from "next/image";
 import { signOut, useSession } from "next-auth/react";
 import { ChevronsUpDown } from "lucide-react";
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from "@workspace/ui/components/popover"
+import { Popover, PopoverContent, PopoverTrigger } from "@workspace/ui/components/popover"
 
 
 export function AppSidebar() {
