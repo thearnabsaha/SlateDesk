@@ -1,4 +1,4 @@
-import { LucideIcon, Search } from 'lucide-react'
+import { LucideIcon } from 'lucide-react'
 import React from 'react'
 interface ItemProps {
     label: string

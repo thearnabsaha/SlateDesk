@@ -1,24 +1,33 @@
-import { ChevronDownIcon, ChevronUpIcon, Icon, LucideIcon } from 'lucide-react'
-import React, { useState } from 'react'
+import { ChevronDownIcon, ChevronUpIcon, LucideIcon } from 'lucide-react'
+import React, { useEffect, useState } from 'react'
 interface ItemProps {
     label?: string
     onClick?: () => void
-    icon?: LucideIcon
+    icon: LucideIcon
     children?: React.ReactNode
 }
+let paddingleft = 5;
 const DocumentItem = ({ label, onClick, icon: Icon, children }: ItemProps) => {
     const [open, setOpen] = useState(false)
+    const [childitem, setChilditem] = useState(1)
+    const handleAccordion = () => {
+        setOpen((prev) => !prev)
+    }
+    useEffect(() => {
+        if (children) {
+            setChilditem((prev) => prev + 1)
+        }
+    }, [])
+
     return (
         <div>
-            <div className='flex w-full items-center text-muted-foreground font-[500]' onClick={() => setOpen((prev) => !prev)}>
+            <div className='flex w-full items-center text-muted-foreground font-[500] py-1 hover:bg-accent' onClick={handleAccordion}>
                 {open ? <ChevronDownIcon className='size-4 ml-4 mr-2' /> :
                     <ChevronUpIcon className='size-4 ml-4 mr-2' />}
-                {/* {Icon && <Icon className='mr-1 size-4' />} */}
+                <Icon className='mr-2 size-4' />
                 <p className=''>{label}</p>
-
             </div>
-            {open ? <>{children}</> : <p className=''>No pages Inside</p>}
-
+            {open && <div style={{ paddingLeft: (paddingleft * childitem) + "px" }}>{children ? children : <p className='font-[500] text-sm text-ring' style={{ paddingLeft: (paddingleft + 30 * childitem) + "px" }}>No pages Inside</p>}</div>}
         </div>
     )
 }
