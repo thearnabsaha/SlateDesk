@@ -7,6 +7,7 @@ import Image from "next/image";
 import { signOut, useSession } from "next-auth/react";
 import { ChevronsUpDown } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@workspace/ui/components/popover"
+import SidebarItems from "./SidebarItems";
 
 
 export function AppSidebar() {
@@ -35,7 +36,9 @@ export function AppSidebar() {
                     </Popover>
                 </SidebarHeader>
                 <SidebarContent>
-
+                    <SidebarItems />
+                    <SidebarItems />
+                    <SidebarItems />
                 </SidebarContent>
                 <SidebarFooter>
 
