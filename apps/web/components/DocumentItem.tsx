@@ -21,7 +21,7 @@ const DocumentItem = ({ label, onClick, icon: Icon, children }: ItemProps) => {
 
     return (
         <div>
-            <div className='flex w-full items-center text-muted-foreground font-[500] py-1 hover:bg-accent' onClick={handleAccordion}>
+            <div className='flex w-full items-center text-muted-foreground font-[500] py-1 hover:bg-accent cursor-pointer' onClick={handleAccordion}>
                 {open ? <ChevronDownIcon className='size-4 ml-4 mr-2' /> :
                     <ChevronUpIcon className='size-4 ml-4 mr-2' />}
                 <Icon className='mr-2 size-4' />
