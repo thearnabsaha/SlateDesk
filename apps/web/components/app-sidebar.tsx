@@ -5,9 +5,10 @@ import * as React from "react";
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuAction, SidebarMenuButton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarRail } from "@workspace/ui/components/sidebar";
 import Image from "next/image";
 import { signOut, useSession } from "next-auth/react";
-import { ChevronsUpDown } from "lucide-react";
+import { ChevronsUpDown, CirclePlus, Search, Settings, Trash } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@workspace/ui/components/popover"
 import SidebarItems from "./SidebarItems";
+import Documents from "./Documents";
 
 
 export function AppSidebar() {
@@ -36,9 +37,11 @@ export function AppSidebar() {
                     </Popover>
                 </SidebarHeader>
                 <SidebarContent>
-                    <SidebarItems />
-                    <SidebarItems />
-                    <SidebarItems />
+                    <SidebarItems label="Search" icon={Search} shortcut="⌘ K" />
+                    <SidebarItems label="Settings" icon={Settings} />
+                    <SidebarItems label="New Page" icon={CirclePlus} shortcut="⌘ N" />
+                    <Documents />
+                    <SidebarItems label="Trash" icon={Trash} />
                 </SidebarContent>
                 <SidebarFooter>
 
