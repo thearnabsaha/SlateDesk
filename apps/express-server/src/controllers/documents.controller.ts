@@ -15,8 +15,21 @@ export const AddDocument = async (req: Request, res: Response) => {
                     documentId: req.body.documentId
                 }
             })
-            res.status(200).json({ "message": `New Document Added with id 1234` })
+            res.status(200).json({ "message": `New Document Added with id ${document.id}` })
         }
+    } catch (error) {
+        res.status(500).json({ "Error": error })
+        console.log(error)
+    }
+}
+export const GetAllDocument = async (req: Request, res: Response) => {
+    try {
+        const document = await prisma.document.findMany({
+            where: {
+                userId: req.params.userId,
+            }
+        })
+        res.status(200).json({ "message": document })
     } catch (error) {
         res.status(500).json({ "Error": error })
         console.log(error)

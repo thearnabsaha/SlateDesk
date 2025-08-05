@@ -16,6 +16,7 @@
     "@prisma/client": "^6.12.0",
     "@workspace/database": "workspace:*",
     "@workspace/ui": "workspace:*",
+    "axios": "^1.11.0",
     "lucide-react": "^0.475.0",
     "next": "^15.2.3",
     "next-auth": "5.0.0-beta.29",
