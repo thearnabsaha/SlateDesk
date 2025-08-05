@@ -20,3 +20,6 @@ export const SignInSchema = z.object({
         .regex(/[0-9]/, { message: 'Password must contain at least one number' })
         .regex(/[@$!%*?&]/, { message: 'Password must contain at least one special character' }),
 });
+export const DocumentSchema = z.object({
+    label: z.string().min(1, { message: 'Label must be at least 1 character long' }),
+});

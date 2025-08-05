@@ -6,7 +6,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,11 +13,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@workspace/typescript-config": "workspace:*",
-    "@prisma/client": "^6.12.0"
+    "@prisma/client": "^6.13.0",
+    "@workspace/typescript-config": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^20",
-    "prisma": "^6.12.0"
+    "prisma": "^6.13.0"
   }
 }

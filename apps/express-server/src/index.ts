@@ -8,6 +8,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import ServerRoutes from './routes/server.route'
+import DocumentRoutes from './routes/documents.route'
 // import { prisma } from '@workspace/database/client'
 const morganFormat = ':method :url :status :response-time ms';
 
@@ -24,4 +25,5 @@ app.use(express.urlencoded({ extended: true, limit: '16kb' }));
 app.use(express.static('public'));
 app.use(cookieParser());
 app.use("/", ServerRoutes)
+app.use("/document", DocumentRoutes)
 app.listen(port, () => console.log('> Server is up and running on port: ' + port));
