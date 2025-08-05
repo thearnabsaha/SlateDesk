@@ -7,8 +7,8 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import morgan from 'morgan';
 import helmet from 'helmet';
-import { prisma } from '@workspace/database/client'
-import { SignUpSchema, SignInSchema } from '@workspace/utils/types'
+import ServerRoutes from './routes/server.route'
+// import { prisma } from '@workspace/database/client'
 const morganFormat = ':method :url :status :response-time ms';
 
 app.use(morgan(morganFormat));
@@ -23,19 +23,5 @@ app.use(express.json({ limit: '16kb' }));
 app.use(express.urlencoded({ extended: true, limit: '16kb' }));
 app.use(express.static('public'));
 app.use(cookieParser());
-app.get('/', (req, res) => {
-    res.send('hello from simple server :)');
-});
-
-// app.post('/signup', async (req, res) => {
-//     const result = SignUpSchema.safeParse(req.body);
-//     if (!result.success) {
-//         res.send(result.error.format());
-//     } else {
-//         const user = await prisma.user.createMany({
-//             data: req.body
-//         });
-//         res.send(user);
-//     }
-// });
+app.use("/", ServerRoutes)
 app.listen(port, () => console.log('> Server is up and running on port: ' + port));
