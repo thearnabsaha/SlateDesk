@@ -11,7 +11,6 @@ let paddingleft = 5;
 const DocumentItem = ({ label, onClick, icon: Icon, children }: ItemProps) => {
     const [open, setOpen] = useState(false)
     const [childitem, setChilditem] = useState(1)
-    const [opacity, setOpacity] = useState(false)
     useEffect(() => {
         if (children) {
             setChilditem((prev) => prev + 1)
