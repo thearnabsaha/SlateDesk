@@ -38,7 +38,9 @@ const DocumentItem = ({ label, onClick, icon: Icon, children }: ItemProps) => {
                     <Plus className='mr-3 size-4' />
                 </div>}
             </div>
-            {open && <div style={{ paddingLeft: (paddingleft * childitem) + "px" }}>{children ? children : <p className='font-[500] text-sm text-ring' style={{ paddingLeft: (paddingleft + 30 * childitem) + "px" }}>No pages Inside</p>}</div>}
+            {open && <div style={{ paddingLeft: (paddingleft * childitem) + "px" }}>
+                {children}
+            </div>}
         </div>
     )
 }

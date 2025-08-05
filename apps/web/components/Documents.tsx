@@ -2,54 +2,33 @@ import React, { useEffect, useState } from 'react'
 import DocumentItem from './DocumentItem'
 import { File } from 'lucide-react'
 import axios from 'axios'
-// const documents = [
-//   {
-//     "id": 1,
-//     "label": "Page 1",
-//     "child": [
-//       {
-//         "id": 2,
-//         "label": "Child Page 1",
-//         "child": []
-//       },
-//       {
-//         "id": 3,
-//         "label": "Child Page 2",
-//         "child": [
-//           {
-//             "id": 4,
-//             "label": "Grand Child Page 1",
-//             "child": []
-//           },
-//           {
-//             "id": 5,
-//             "label": "Grand Child Page 2",
-//             "child": []
-//           },
-//         ]
-//       },
-//     ],
-//   }
-// ]
-
-// //@ts-ignore
-// const RenderDocumentsChild = ({ nodes }) => {
-//   return (
-//     <>
-//       {
-//         nodes.map((e) => (
-//           <DocumentItem icon={File} label={e.label} key={e.id}>
-//             {
-//               e.child && e.child.length > 0 && (
-//                 <RenderDocumentsChild nodes={e.child} />
-//               )
-//             }
-//           </DocumentItem>
-//         ))
-//       }
-//     </>
-//   )
-// }
+interface DocumentNode {
+  id: string
+  label: string
+  documentId: string | null
+}
+interface RenderDocumentsChildProps {
+  nodes: DocumentNode[]
+  parentId?: string | null
+}
+const RenderDocumentsChild = ({ nodes, parentId = null }: RenderDocumentsChildProps) => {
+  const currentNodes = nodes.filter((e) => e.documentId === parentId)
+  return (
+    <>
+      {
+        currentNodes.map((e) => {
+          return (
+            <div key={e.id}>
+              <DocumentItem icon={File} label={e.label}>
+                <RenderDocumentsChild nodes={nodes} parentId={e.id} />
+              </DocumentItem>
+            </div>
+          )
+        })
+      }
+    </>
+  )
+}
 
 const Documents = () => {
   const [documents, setDocuments] = useState([])
@@ -63,15 +42,7 @@ const Documents = () => {
   }, [])
   return (
     <div>
-      {/* <RenderDocumentsChild nodes={documents} /> */}
-      {/* <DocumentItem icon={File} label={}/> */}
-      {
-        documents.map((e) => {
-          return (
-            <></>
-          )
-        })
-      }
+      <RenderDocumentsChild nodes={documents} />
     </div >
   )
 }
