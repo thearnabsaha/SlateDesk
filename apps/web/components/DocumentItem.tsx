@@ -1,14 +1,16 @@
 import { Popover, PopoverContent, PopoverTrigger } from '@workspace/ui/components/popover'
-import { ChevronDownIcon, ChevronUpIcon, Ellipsis, LucideIcon, Plus, Trash } from 'lucide-react'
+import axios from 'axios'
+import { ChevronDownIcon, ChevronRightIcon, Ellipsis, LucideIcon, Plus, Trash } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 interface ItemProps {
     label?: string
     onClick?: () => void
-    icon: LucideIcon
+    icon: LucideIcon,
+    id: string
     children?: React.ReactNode
 }
 let paddingleft = 5;
-const DocumentItem = ({ label, onClick, icon: Icon, children }: ItemProps) => {
+const DocumentItem = ({ label, onClick, icon: Icon, children, id }: ItemProps) => {
     const [open, setOpen] = useState(false)
     const [childitem, setChilditem] = useState(1)
     useEffect(() => {
@@ -16,12 +18,25 @@ const DocumentItem = ({ label, onClick, icon: Icon, children }: ItemProps) => {
             setChilditem((prev) => prev + 1)
         }
     }, [])
-
+    const childPageHandler = (e) => {
+        e.stopPropagation()
+        axios.post('http://localhost:3001/document/', {
+            "label": "Untitled",
+            "documentId": id,
+            "userId": "cmdq5vyme00002mx8wn15bx2l"
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
     return (
         <div>
             <div className='group/document-item flex w-full items-center text-muted-foreground font-[500] py-1 hover:bg-accent cursor-pointer' onClick={() => setOpen((prev) => !prev)}>
                 {open ? <ChevronDownIcon className='size-4 ml-4 mr-2 shrink-0 min-w-4 min-h-4' /> :
-                    <ChevronUpIcon className='size-4 ml-4 mr-2 shrink-0 min-w-4 min-h-4' />}
+                    <ChevronRightIcon className='size-4 ml-4 mr-2 shrink-0 min-w-4 min-h-4' />}
                 <Icon className='mr-2 size-4 shrink-0 min-w-4 min-h-4' />
                 <p className=''>{label}</p>
                 {<div className='ml-auto flex invisible group-hover/document-item:visible' onClick={(e) => e.stopPropagation()}>
@@ -35,7 +50,7 @@ const DocumentItem = ({ label, onClick, icon: Icon, children }: ItemProps) => {
                             <h1 className="p-2 text-xs font-[500] text-ring">Last Edited by: Arnab Saha</h1>
                         </PopoverContent>
                     </Popover>
-                    <Plus className='mr-3 size-4' />
+                    <Plus className='mr-3 size-4' onClick={childPageHandler} />
                 </div>}
             </div>
             {open && <div style={{ paddingLeft: (paddingleft * childitem) + "px" }}>

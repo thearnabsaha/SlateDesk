@@ -9,8 +9,20 @@ import { ChevronsUpDown, CirclePlus, Search, Settings, Trash } from "lucide-reac
 import { Popover, PopoverContent, PopoverTrigger } from "@workspace/ui/components/popover"
 import SidebarItems from "./SidebarItems";
 import Documents from "./Documents";
+import axios from "axios";
 
-
+const newPageHandler = () => {
+    axios.post('http://localhost:3001/document/', {
+        "label": "Untitled",
+        "userId": "cmdq5vyme00002mx8wn15bx2l"
+    })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
 export function AppSidebar() {
     const { data: session, status } = useSession()
     return (
@@ -39,7 +51,7 @@ export function AppSidebar() {
                 <SidebarContent>
                     <SidebarItems label="Search" icon={Search} shortcut="⌘ K" />
                     <SidebarItems label="Settings" icon={Settings} />
-                    <SidebarItems label="New Page" icon={CirclePlus} shortcut="⌘ N" />
+                    <SidebarItems label="New Page" icon={CirclePlus} shortcut="⌘ N" onClick={newPageHandler} />
                     <Documents />
                     <SidebarItems label="Trash" icon={Trash} />
                 </SidebarContent>
