@@ -20,9 +20,9 @@ const DocumentItem = ({ label, onClick, icon: Icon, children }: ItemProps) => {
     return (
         <div>
             <div className='group/document-item flex w-full items-center text-muted-foreground font-[500] py-1 hover:bg-accent cursor-pointer' onClick={() => setOpen((prev) => !prev)}>
-                {open ? <ChevronDownIcon className='size-4 ml-4 mr-2' /> :
-                    <ChevronUpIcon className='size-4 ml-4 mr-2' />}
-                <Icon className='mr-2 size-4' />
+                {open ? <ChevronDownIcon className='size-4 ml-4 mr-2 shrink-0 min-w-4 min-h-4' /> :
+                    <ChevronUpIcon className='size-4 ml-4 mr-2 shrink-0 min-w-4 min-h-4' />}
+                <Icon className='mr-2 size-4 shrink-0 min-w-4 min-h-4' />
                 <p className=''>{label}</p>
                 {<div className='ml-auto flex invisible group-hover/document-item:visible' onClick={(e) => e.stopPropagation()}>
                     <Popover>
