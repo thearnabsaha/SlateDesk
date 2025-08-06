@@ -82,6 +82,7 @@ model Document {
   id         Int        @id @default(autoincrement())
   label      String
   documentId Int?
+  archieved  Boolean
   // Recursive self-relation
   parent     Document?  @relation("DocumentToChildren", fields: [documentId], references: [id])
   children   Document[] @relation("DocumentToChildren")

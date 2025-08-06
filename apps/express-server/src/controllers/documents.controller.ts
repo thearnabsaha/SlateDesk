@@ -12,7 +12,8 @@ export const AddDocument = async (req: Request, res: Response) => {
                 data: {
                     label: req.body.label,
                     userId: req.body.userId,
-                    documentId: req.body.documentId
+                    documentId: req.body.documentId,
+                    archieved: false
                 }
             })
             res.status(200).json({ "message": `New Document Added with id ${document.id}` })
