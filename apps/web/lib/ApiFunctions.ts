@@ -33,6 +33,22 @@ export const pageDeleteHandler = (e, id, userId) => {
             console.log(error);
         });
 }
+export const pageArchievedHandler = (e, id, userId) => {
+    e.stopPropagation()
+    console.log(userId, id)
+    axios.put(`${BACKEND_URL}document/archieve`, {
+        userId: userId,
+        id: id
+    }
+    )
+        .then(function (response) {
+            console.log(response);
+            window.location.reload()
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
 export const newPageHandler = (userId) => {
     axios.post(`${BACKEND_URL}document/`, {
         label: "Untitled",

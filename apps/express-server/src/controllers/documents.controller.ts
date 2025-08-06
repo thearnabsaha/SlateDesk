@@ -13,7 +13,7 @@ export const AddDocument = async (req: Request, res: Response) => {
                     label: req.body.label,
                     userId: req.body.userId,
                     documentId: req.body.documentId,
-                    archieved: req.body.archieved
+                    archieved: false
                 }
             })
             res.status(200).json({ "message": `New Document Added with id ${document.id}` })
@@ -32,6 +32,26 @@ export const DeleteDocument = async (req: Request, res: Response) => {
             }
         })
         res.status(200).json({ "message": `Document Deleted with id ${document.id}` })
+    } catch (error) {
+        res.status(500).json({ "Error": error })
+        console.log(error)
+    }
+}
+export const archievedDocument = async (req: Request, res: Response) => {
+    try {
+        const document = await prisma.document.updateMany({
+            where: {
+                AND: [
+                    { userId: req.body.userId },
+                    { id: Number(req.body.id) }
+                ],
+            },
+            data: {
+                archieved: true
+            }
+        })
+        // res.status(200).json({ "message": `Document is Archieved ` })
+        res.status(200).json({ "message": document })
     } catch (error) {
         res.status(500).json({ "Error": error })
         console.log(error)

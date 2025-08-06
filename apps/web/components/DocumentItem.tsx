@@ -1,4 +1,4 @@
-import { childPageHandler, pageDeleteHandler } from '@/lib/ApiFunctions'
+import { childPageHandler, pageArchievedHandler, pageDeleteHandler } from '@/lib/ApiFunctions'
 import { Popover, PopoverContent, PopoverTrigger } from '@workspace/ui/components/popover'
 import { ChevronDownIcon, ChevronRightIcon, Ellipsis, LucideIcon, Plus, Trash } from 'lucide-react'
 import { useSession } from 'next-auth/react'
@@ -34,7 +34,7 @@ const DocumentItem = ({ label, onClick, icon: Icon, children, id }: ItemProps) =
                             <Ellipsis className='mr-3 size-4' />
                         </PopoverTrigger>
                         <PopoverContent className="m-0 p-0 w-56 translate-x-30 bg-accent">
-                            <h1 className="flex items-center p-2 cursor-pointer hover:bg-background" onClick={(e) => pageDeleteHandler(e, id, session?.user?.id)}>
+                            <h1 className="flex items-center p-2 cursor-pointer hover:bg-background" onClick={(e) => pageArchievedHandler(e, id, session?.user?.id)}>
                                 <Trash className='mr-3 size-4' />Delete</h1>
                             <div className='bg-ring w-full h-[1px]' />
                             <h1 className="p-2 text-xs font-[500] text-ring">Last Edited by: Arnab Saha</h1>
