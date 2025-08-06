@@ -7,6 +7,7 @@ import c from '../../public/c.svg'
 import { Button } from "@workspace/ui/components/button";
 import { CirclePlus, Plus } from "lucide-react";
 import axios from "axios";
+import { newPageHandler } from "@/lib/ApiFunctions";
 const Dashboard = () => {
   const router = useRouter()
   const { data: session, status } = useSession()
@@ -18,19 +19,6 @@ const Dashboard = () => {
       <h1>Loading....</h1>
     }
   }, [])
-  const newPageHandler = () => {
-    axios.post('http://localhost:3001/document/', {
-      "label": "Untitled",
-      "userId": "cmdq5vyme00002mx8wn15bx2l"
-    })
-      .then(function (response) {
-        console.log(response);
-        window.location.reload()
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
   return (
     <div className="flex flex-col w-full h-full">
       {

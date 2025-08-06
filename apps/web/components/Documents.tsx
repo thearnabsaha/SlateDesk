@@ -19,7 +19,7 @@ const RenderDocumentsChild = ({ nodes, parentId = null }: RenderDocumentsChildPr
         currentNodes.map((e) => {
           return (
             <div key={e.id}>
-              <DocumentItem icon={File} label={e.label} ParentId={e.id} id={e.id}>
+              <DocumentItem icon={File} label={e.label} id={e.id}>
                 <RenderDocumentsChild nodes={nodes} parentId={e.id} />
               </DocumentItem>
             </div>

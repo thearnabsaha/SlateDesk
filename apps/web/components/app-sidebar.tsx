@@ -10,20 +10,9 @@ import { Popover, PopoverContent, PopoverTrigger } from "@workspace/ui/component
 import SidebarItems from "./SidebarItems";
 import Documents from "./Documents";
 import axios from "axios";
+import { newPageHandler } from "@/lib/ApiFunctions";
 
-const newPageHandler = () => {
-    axios.post('http://localhost:3001/document/', {
-        "label": "Untitled",
-        "userId": "cmdq5vyme00002mx8wn15bx2l"
-    })
-        .then(function (response) {
-            console.log(response);
-            window.location.reload()
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-}
+
 export function AppSidebar() {
     const { data: session, status } = useSession()
     return (
