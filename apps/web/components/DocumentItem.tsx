@@ -6,11 +6,12 @@ interface ItemProps {
     label?: string
     onClick?: () => void
     icon: LucideIcon,
-    id: string
+    ParentId: string,
+    id: string,
     children?: React.ReactNode
 }
 let paddingleft = 5;
-const DocumentItem = ({ label, onClick, icon: Icon, children, id }: ItemProps) => {
+const DocumentItem = ({ label, onClick, icon: Icon, children, ParentId, id }: ItemProps) => {
     const [open, setOpen] = useState(false)
     const [childitem, setChilditem] = useState(1)
     useEffect(() => {
@@ -27,6 +28,25 @@ const DocumentItem = ({ label, onClick, icon: Icon, children, id }: ItemProps) =
         })
             .then(function (response) {
                 console.log(response);
+                window.location.reload()
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+    const pageDeleteHandler = (e) => {
+        e.stopPropagation()
+        console.log(id)
+        axios.delete('http://localhost:3001/document/', {
+            data: {
+                userId: "cmdq5vyme00002mx8wn15bx2l",
+                id: id
+            }
+        })
+            .then(function (response) {
+                console.log(response);
+                window.location.reload()
             })
             .catch(function (error) {
                 console.log(error);
@@ -45,7 +65,8 @@ const DocumentItem = ({ label, onClick, icon: Icon, children, id }: ItemProps) =
                             <Ellipsis className='mr-3 size-4' />
                         </PopoverTrigger>
                         <PopoverContent className="m-0 p-0 w-56 translate-x-30 bg-accent">
-                            <h1 className="flex items-center p-2 cursor-pointer hover:bg-background" onClick={(e) => e.stopPropagation()}><Trash className='mr-3 size-4' />Delete</h1>
+                            <h1 className="flex items-center p-2 cursor-pointer hover:bg-background" onClick={pageDeleteHandler}>
+                                <Trash className='mr-3 size-4' />Delete</h1>
                             <div className='bg-ring w-full h-[1px]' />
                             <h1 className="p-2 text-xs font-[500] text-ring">Last Edited by: Arnab Saha</h1>
                         </PopoverContent>
