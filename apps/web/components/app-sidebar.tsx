@@ -41,7 +41,7 @@ export function AppSidebar() {
                 <SidebarContent>
                     <SidebarItems label="Search" icon={Search} shortcut="⌘ K" />
                     <SidebarItems label="Settings" icon={Settings} />
-                    <SidebarItems label="New Page" icon={CirclePlus} shortcut="⌘ N" onClick={newPageHandler} />
+                    <SidebarItems label="New Page" icon={CirclePlus} shortcut="⌘ N" onClick={() => newPageHandler(session?.user?.id)} />
                     <Documents />
                     <SidebarItems label="Trash" icon={Trash} />
                 </SidebarContent>

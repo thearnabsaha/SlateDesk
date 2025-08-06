@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import DocumentItem from './DocumentItem'
 import { File } from 'lucide-react'
 import axios from 'axios'
+import { useSession } from 'next-auth/react'
 interface DocumentNode {
   id: string
   label: string
@@ -31,10 +32,10 @@ const RenderDocumentsChild = ({ nodes, parentId = null }: RenderDocumentsChildPr
 }
 
 const Documents = () => {
+  const { data: session, status } = useSession()
   const [documents, setDocuments] = useState([])
   useEffect(() => {
-    axios.get("http://localhost:3001/document/cmdq5vyme00002mx8wn15bx2l").then((e) => {
-      console.log(e.data.message)
+    axios.get(`http://localhost:3001/document/${session?.user?.id}`).then((e) => {
       setDocuments(e.data.message)
     }).catch(function (error) {
       console.log(error);

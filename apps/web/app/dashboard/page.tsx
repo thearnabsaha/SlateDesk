@@ -25,7 +25,7 @@ const Dashboard = () => {
         session && <div className="flex flex-col justify-center items-center w-full mt-50 lg:mt-30">
           <Image src={c} alt="book" className="sm:w-[300px] w-[200px] m-10" />
           <h1>Welcome to {session.user?.name?.split(" ")[0]}'s Desk</h1>
-          <Button className="mt-2" onClick={newPageHandler}><CirclePlus /> Create Slate</Button>
+          <Button className="mt-2" onClick={() => newPageHandler(session?.user?.id)}><CirclePlus /> Create Slate</Button>
         </div>
       }
 

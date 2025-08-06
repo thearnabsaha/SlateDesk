@@ -10,7 +10,7 @@ const authConfig: NextAuthConfig = {
     secret: process.env.AUTH_SECRET as string,
     pages: {
         // signIn: "/signin",
-        signOut: "/logout",
+        // signOut: "/logout",
         // newUser: "/dasboard",
     },
 };

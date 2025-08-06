@@ -1,11 +1,11 @@
 import axios from "axios";
 
-export const childPageHandler = (e, id) => {
+export const childPageHandler = (e, id, userId) => {
     e.stopPropagation()
     axios.post('http://localhost:3001/document/', {
-        "label": "Untitled",
-        "documentId": id,
-        "userId": "cmdq5vyme00002mx8wn15bx2l"
+        label: "Untitled",
+        documentId: id,
+        userId: userId
     })
         .then(function (response) {
             console.log(response);
@@ -16,12 +16,11 @@ export const childPageHandler = (e, id) => {
             console.log(error);
         });
 }
-export const pageDeleteHandler = (e, id) => {
+export const pageDeleteHandler = (e, id, userId) => {
     e.stopPropagation()
-    console.log(id)
     axios.delete('http://localhost:3001/document/', {
         data: {
-            userId: "cmdq5vyme00002mx8wn15bx2l",
+            userId: userId,
             id: id
         }
     })
@@ -33,10 +32,10 @@ export const pageDeleteHandler = (e, id) => {
             console.log(error);
         });
 }
-export const newPageHandler = () => {
+export const newPageHandler = (userId) => {
     axios.post('http://localhost:3001/document/', {
-        "label": "Untitled",
-        "userId": "cmdq5vyme00002mx8wn15bx2l"
+        label: "Untitled",
+        userId: userId
     })
         .then(function (response) {
             console.log(response);
