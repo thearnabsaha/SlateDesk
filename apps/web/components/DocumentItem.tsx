@@ -8,11 +8,12 @@ interface ItemProps {
     onClick?: () => void
     icon: LucideIcon,
     id: string,
+    documentId: string,
     children?: React.ReactNode
 }
 let paddingleft = 5;
 
-const DocumentItem = ({ label, onClick, icon: Icon, children, id }: ItemProps) => {
+const DocumentItem = ({ label, onClick, icon: Icon, children, id, documentId }: ItemProps) => {
     const [open, setOpen] = useState(false)
     const [childitem, setChilditem] = useState(1)
     const { data: session, status } = useSession()
@@ -34,7 +35,7 @@ const DocumentItem = ({ label, onClick, icon: Icon, children, id }: ItemProps) =
                             <Ellipsis className='mr-3 size-4' />
                         </PopoverTrigger>
                         <PopoverContent className="m-0 p-0 w-56 translate-x-30 bg-accent">
-                            <h1 className="flex items-center p-2 cursor-pointer hover:bg-background" onClick={(e) => pageArchievedHandler(e, id, session?.user?.id)}>
+                            <h1 className="flex items-center p-2 cursor-pointer hover:bg-background" onClick={(e) => pageArchievedHandler(e, id, session?.user?.id, documentId)}>
                                 <Trash className='mr-3 size-4' />Delete</h1>
                             <div className='bg-ring w-full h-[1px]' />
                             <h1 className="p-2 text-xs font-[500] text-ring">Last Edited by: Arnab Saha</h1>

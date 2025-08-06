@@ -11,7 +11,6 @@ export const childPageHandler = (e, id, userId) => {
         .then(function (response) {
             console.log(response);
             window.location.reload()
-
         })
         .catch(function (error) {
             console.log(error);
@@ -33,12 +32,13 @@ export const pageDeleteHandler = (e, id, userId) => {
             console.log(error);
         });
 }
-export const pageArchievedHandler = (e, id, userId) => {
+export const pageArchievedHandler = (e, id, userId, documentId) => {
     e.stopPropagation()
-    console.log(userId, id)
+    console.log(userId, id, documentId)
     axios.put(`${BACKEND_URL}document/archieve`, {
         userId: userId,
-        id: id
+        id: id,
+        documentId: documentId
     }
     )
         .then(function (response) {

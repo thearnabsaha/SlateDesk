@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { DocumentSchema } from '@workspace/utils/types';
 import { prisma } from '@workspace/database/client';
+import { getAllDescendantIds } from '../utils/getAllDescendantIds';
 
 export const AddDocument = async (req: Request, res: Response) => {
     try {
@@ -39,19 +40,17 @@ export const DeleteDocument = async (req: Request, res: Response) => {
 }
 export const archievedDocument = async (req: Request, res: Response) => {
     try {
+        const allIds = await getAllDescendantIds(Number(req.body.id), prisma);
         const document = await prisma.document.updateMany({
             where: {
-                AND: [
-                    { userId: req.body.userId },
-                    { id: Number(req.body.id) }
-                ],
+                userId: req.body.userId,
+                id: { in: allIds },
             },
             data: {
                 archieved: true
             }
         })
-        // res.status(200).json({ "message": `Document is Archieved ` })
-        res.status(200).json({ "message": document })
+        res.status(200).json({ "message": `Document is Archieved ` })
     } catch (error) {
         res.status(500).json({ "Error": error })
         console.log(error)
