@@ -13,7 +13,7 @@ export const AddDocument = async (req: Request, res: Response) => {
                     label: req.body.label,
                     userId: req.body.userId,
                     documentId: req.body.documentId,
-                    archieved: false
+                    archieved: req.body.archieved
                 }
             })
             res.status(200).json({ "message": `New Document Added with id ${document.id}` })
@@ -41,7 +41,10 @@ export const GetAllDocument = async (req: Request, res: Response) => {
     try {
         const document = await prisma.document.findMany({
             where: {
-                userId: req.params.userId,
+                AND: [
+                    { userId: req.params.userId },
+                    { archieved: false }
+                ]
             }
         })
         res.status(200).json({ "message": document })

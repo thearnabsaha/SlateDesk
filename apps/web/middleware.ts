@@ -7,7 +7,6 @@ export async function middleware(request: NextRequest) {
         req: request,
         secret: process.env.AUTH_SECRET,
     });
-    console.log(token?.sub)
     if (!token) {
         // If no token is found, redirect to the login page
         return NextResponse.redirect(new URL("/signin", request.url));

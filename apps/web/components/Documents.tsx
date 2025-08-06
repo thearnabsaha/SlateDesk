@@ -3,6 +3,7 @@ import DocumentItem from './DocumentItem'
 import { File } from 'lucide-react'
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
+import { BACKEND_URL } from '@/lib/config'
 interface DocumentNode {
   id: string
   label: string
@@ -35,7 +36,7 @@ const Documents = () => {
   const { data: session, status } = useSession()
   const [documents, setDocuments] = useState([])
   useEffect(() => {
-    axios.get(`http://localhost:3001/document/${session?.user?.id}`).then((e) => {
+    axios.get(`${BACKEND_URL}document/${session?.user?.id}`).then((e) => {
       setDocuments(e.data.message)
     }).catch(function (error) {
       console.log(error);
