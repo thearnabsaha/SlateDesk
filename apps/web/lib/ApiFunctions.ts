@@ -32,13 +32,11 @@ export const pageDeleteHandler = (e, id, userId) => {
             console.log(error);
         });
 }
-export const pageArchievedHandler = (e, id, userId, documentId) => {
+export const pageArchievedHandler = (e, id, userId) => {
     e.stopPropagation()
-    console.log(userId, id, documentId)
     axios.put(`${BACKEND_URL}document/archieve`, {
         userId: userId,
         id: id,
-        documentId: documentId
     }
     )
         .then(function (response) {
