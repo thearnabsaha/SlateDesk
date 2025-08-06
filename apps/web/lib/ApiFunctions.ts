@@ -1,8 +1,9 @@
 import axios from "axios";
+import { BACKEND_URL } from "./config";
 
 export const childPageHandler = (e, id, userId) => {
     e.stopPropagation()
-    axios.post('http://localhost:3001/document/', {
+    axios.post(`${BACKEND_URL}document/`, {
         label: "Untitled",
         documentId: id,
         userId: userId
@@ -18,7 +19,7 @@ export const childPageHandler = (e, id, userId) => {
 }
 export const pageDeleteHandler = (e, id, userId) => {
     e.stopPropagation()
-    axios.delete('http://localhost:3001/document/', {
+    axios.delete(`${BACKEND_URL}document/`, {
         data: {
             userId: userId,
             id: id
@@ -33,7 +34,7 @@ export const pageDeleteHandler = (e, id, userId) => {
         });
 }
 export const newPageHandler = (userId) => {
-    axios.post('http://localhost:3001/document/', {
+    axios.post(`${BACKEND_URL}document/`, {
         label: "Untitled",
         userId: userId
     })
