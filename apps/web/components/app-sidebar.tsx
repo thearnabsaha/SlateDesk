@@ -11,6 +11,7 @@ import SidebarItems from "./SidebarItems";
 import Documents from "./Documents";
 import axios from "axios";
 import { newPageHandler } from "@/lib/ApiFunctions";
+import ArchievedDocuments from "./ArchievedDocuments";
 
 
 export function AppSidebar() {
@@ -43,14 +44,15 @@ export function AppSidebar() {
                     <SidebarItems label="Settings" icon={Settings} />
                     <SidebarItems label="New Page" icon={CirclePlus} shortcut="⌘ N" onClick={() => newPageHandler(session?.user?.id)} />
                     <Documents />
-
                     <Popover>
                         <PopoverTrigger><SidebarItems label="Trash" icon={Trash} /></PopoverTrigger>
-                        <PopoverContent className="border border-ring">Place content for the popover here.</PopoverContent>
+                        <PopoverContent className="border border-ring translate-x-20">
+                            <div className="flex items-center"><Search /><input type="text" placeholder="Filter by page title..." className="border border-ring rounded-sm p-1 w-full pl-5 ml-1" /></div>
+                            <ArchievedDocuments />
+                        </PopoverContent>
                     </Popover>
                 </SidebarContent>
                 <SidebarFooter>
-
                 </SidebarFooter>
                 <SidebarRail />
             </Sidebar>}
