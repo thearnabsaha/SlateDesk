@@ -3,6 +3,17 @@ import { Popover, PopoverContent, PopoverTrigger } from '@workspace/ui/component
 import { ChevronDownIcon, ChevronRightIcon, Ellipsis, LucideIcon, Plus, Trash, Undo } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import React, { useEffect, useState } from 'react'
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@workspace/ui/components/alert-dialog"
 interface ItemProps {
     label?: string
     onClick?: () => void
@@ -30,8 +41,22 @@ const ArchievedDocumentsItem = ({ label, onClick, icon: Icon, children, id }: It
                 <p className=''>{label}</p>
                 {<div className='ml-auto flex invisible group-hover/document-item:visible' onClick={(e) => e.stopPropagation()}>
                     <Undo className='mr-3 size-4' />
-                    {/* <Plus className='mr-3 size-4' onClick={(e) => childPageHandler(e, id, session?.user?.id)} /> */}
-                    <Trash className='mr-3 size-4' />
+                    {/* <AlertDialog>
+                        <AlertDialogTrigger asChild><Trash className='mr-3 size-4' /></AlertDialogTrigger>
+                        <AlertDialogContent className='z-[9999]'>
+                            <AlertDialogHeader className='z-[9999]'>
+                                <AlertDialogTitle className='z-[9999]'>Are you absolutely sure?</AlertDialogTitle>
+                                <AlertDialogDescription className='z-[9999]'>
+                                    This action cannot be undone. This will permanently delete your account
+                                    and remove your data from our servers.
+                                </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                <AlertDialogAction>Continue</AlertDialogAction>
+                            </AlertDialogFooter>
+                        </AlertDialogContent>
+                    </AlertDialog> */}
                 </div>}
             </div>
             {open && <div style={{ paddingLeft: (paddingleft * childitem) + "px" }}>
