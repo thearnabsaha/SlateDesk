@@ -27,14 +27,14 @@ export function AppSidebar() {
                                 <ChevronsUpDown className="text-ring text-sm size-4 cursor-pointer" />
                             </div>
                         </PopoverTrigger>
-                        <PopoverContent className="m-0 p-0 w-72 translate-x-10">
+                        <PopoverContent className="m-0 p-0 w-72 translate-x-10 border border-ring">
                             <h1 className=" font-medium text-xs text-ring pt-2 px-2">{session.user?.email}</h1>
                             <div className="flex space-x-1 items-center p-2 pb-3">
                                 <Image src={session.user?.image || "/default.png"} width={30} height={30} alt="book" className="w-[30px] h-[30px] rounded-4xl" />
                                 <h1 className=" font-medium text-xs">{session.user?.name}'s Desk</h1>
                             </div>
-                            <hr />
-                            <h1 className="text-xs text-ring font-semibold cursor-pointer px-2 py-1" onClick={() => signOut({ callbackUrl: "/" })}>Log Out</h1>
+                            <div className="bg-ring w-full h-[1px]" />
+                            <h1 className="text-xs text-ring font-semibold cursor-pointer px-2 py-1 hover:bg-accent rounded-2xl" onClick={() => signOut({ callbackUrl: "/" })}>Log Out</h1>
                         </PopoverContent>
                     </Popover>
                 </SidebarHeader>
@@ -43,7 +43,11 @@ export function AppSidebar() {
                     <SidebarItems label="Settings" icon={Settings} />
                     <SidebarItems label="New Page" icon={CirclePlus} shortcut="⌘ N" onClick={() => newPageHandler(session?.user?.id)} />
                     <Documents />
-                    <SidebarItems label="Trash" icon={Trash} />
+
+                    <Popover>
+                        <PopoverTrigger><SidebarItems label="Trash" icon={Trash} /></PopoverTrigger>
+                        <PopoverContent className="border border-ring">Place content for the popover here.</PopoverContent>
+                    </Popover>
                 </SidebarContent>
                 <SidebarFooter>
 

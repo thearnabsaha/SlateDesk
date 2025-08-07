@@ -33,7 +33,7 @@ const DocumentItem = ({ label, onClick, icon: Icon, children, id }: ItemProps) =
                         <PopoverTrigger asChild className='cursor-pointer'>
                             <Ellipsis className='mr-3 size-4' />
                         </PopoverTrigger>
-                        <PopoverContent className="m-0 p-0 w-56 translate-x-30 bg-accent">
+                        <PopoverContent className="m-0 p-0 w-56 translate-x-30 bg-accent border border-ring">
                             <h1 className="flex items-center p-2 cursor-pointer hover:bg-background" onClick={(e) => pageArchievedHandler(e, id, session?.user?.id)}>
                                 <Trash className='mr-3 size-4' />Delete</h1>
                             <div className='bg-ring w-full h-[1px]' />
