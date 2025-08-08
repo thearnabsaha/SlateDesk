@@ -6,7 +6,6 @@ import Image from "next/image";
 import c from '../../public/c.svg'
 import { Button } from "@workspace/ui/components/button";
 import { CirclePlus, Plus } from "lucide-react";
-import axios from "axios";
 import { newPageHandler } from "@/lib/ApiFunctions";
 const Dashboard = () => {
   const router = useRouter()
