@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { HealthCheck, Server } from "../controllers/server.controller";
 import { AddDocument, archievedDocument, DeleteDocument, GetAllDocument } from "../controllers/documents.controller";
 
 const router: Router = Router();
